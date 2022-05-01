@@ -8,7 +8,7 @@ git init
 git checkout -b
 
 #set branch and respos
-git branch -M main
+git branch -M master
 
 # 设置远程仓库，ssh方式的不需要使用密码
 # git remote add origin https://github.com/littlebee21/siwei.git
@@ -21,5 +21,5 @@ git commit -m "all commit"
 
 
 #orgin 是起源的意思 main是分治
-git push -u origin main
+git push -u origin master
 #git push -u -f orgin main
