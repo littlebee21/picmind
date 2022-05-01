@@ -1,0 +1,56 @@
+# windows下docker desktop挂载本地路径
+
+路径挂载前提
+进行目录挂载
+进行文件本身挂载
+
+### 路径挂载前提
+
+必须先设置docker desktop的共享文件目录
+
+![设置共享文件路径，一般全部选择上。这里演示共享D盘](docker数据卷挂载windows卷2.assets/20200511140631651.png)
+
+### 进行目录挂载
+
+这里以nginx挂载目录为例。
+
+![index.html必须建立的D盘，因为这是由于上面共享目录所致](docker数据卷挂载windows卷2.assets/20200511141012859.png)在index.html中随便填写内容。
+
+![img](docker数据卷挂载windows卷2.assets/20200511141146575.png)
+
+
+
+本例docker版本信息 docker info
+
+![docker版本](docker数据卷挂载windows卷2.assets/20200511141258794.png)
+
+使用docker挂载命令进行目录挂载
+
+docker run --name nginx1 -v **/d/dockervolume/nginx/html**: /**usr/share/nginx/html** -d nginx:1.16.1
+
+进入容器内部查看
+
+docker exec -it nginx1 bash
+
+
+
+发现目录已经正确挂载
+
+![img](docker数据卷挂载windows卷2.assets/20200511141552901.png)
+
+我们将容器内部挂载的目录删除，验证是否宿主机上的文件也也已经删除。
+
+![删除容器内文件](docker数据卷挂载windows卷2.assets/20200511141728789.png)
+
+![发现宿主机上的文件也删除了](docker数据卷挂载windows卷2.assets/20200511141759980.png)
+
+### 进行文件本身挂载
+
+将指定文件挂载到容器内部
+
+![文件挂载](docker数据卷挂载windows卷2.assets/20200511142345270.png)
+
+文件挂载必须指定到挂载到容器内部的具体文件
+————————————————
+版权声明：本文为CSDN博主「zhou820」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zhou820/article/details/106053032
